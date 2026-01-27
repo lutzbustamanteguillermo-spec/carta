@@ -324,6 +324,31 @@
             });
         });
     </script>
+    <script>
+const emojisLluvia = ["💖", "❤️", "🌸", "🌺", "🎉"];
+
+function crearLluvia() {
+    const el = document.createElement("div");
+    el.classList.add("flotante");
+
+    el.innerText = emojisLluvia[Math.floor(Math.random() * emojisLluvia.length)];
+
+    el.style.left = Math.random() * 100 + "vw";
+    el.style.fontSize = (18 + Math.random() * 26) + "px";
+    el.style.animationDuration = (4 + Math.random() * 5) + "s";
+
+    document.body.appendChild(el);
+
+    // eliminar cuando termine de caer
+    setTimeout(() => {
+        el.remove();
+    }, 10000);
+}
+
+// 💖 LLUVIA INFINITA 💖
+setInterval(crearLluvia, 120);
+</script>
+
 
 
     <audio id="clickRomantico" preload="auto">
