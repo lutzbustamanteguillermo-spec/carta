@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Feliz Cumpleaños Karen 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background: url("fondo.png") no-repeat center center fixed;
+    background-size: cover;
+    overflow-x: hidden;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.carta {
+    background: rgba(255,255,255,0.88);
+    margin: 20px;
+    padding: 25px;
+    border-radius: 22px;
+    animation: aparecer 2s ease;
+}
+
+/* TITULO */
+h1 {
+    text-align: center;
+    color: #ff4d6d;
+    font-size: 28px;
+}
+
+/* TEXTO */
+p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: #333;
+}
+
+/* FIRMA */
+.firma {
+    margin-top: 30px;
+    text-align: right;
+    font-style: italic;
+}
+
+/* ANIMACION CARTA */
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* CONFETI */
+.confeti {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    top: -10px;
+    animation: caer linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes caer {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="carta">
+<h1>💖 Feliz Cumpleaños Karen 💖</h1>
+
+<p>
+Hoy es un día muy especial, porque hoy celebramos tus 28 años,
+y no solo eso… celebramos a la mujer tan increíble que eres.
+</p>
+
+<p>
+Karen Clarissa Wong Molina, desde que llegaste a mi vida,
+todo tiene un brillo distinto. Tu sonrisa, tu energía,
+tu forma de ser, tu cabello pelirrojo tan hermoso,
+tu carita tan bonita… todo en ti es especial.
+</p>
+
+<p>
+Eres una mujer fuerte, alegre, inteligente, hermosa,
+y con una vibra que ilumina cualquier lugar.
+Te gusta la fiesta, sabes poner el ambiente,
+y cuando llegas, todo se siente mejor.
+</p>
+
+<p>
+También eres una gran cocinera, de esas que hacen comida
+con sabor y con corazón, y sobre todo,
+eres una mamá increíble.
+Tu hijo tiene a la mejor mamá que podría tener,
+y eso habla muchísimo de la gran mujer que eres.
+</p>
+
+<p>
+Tal vez no te den muchos regalos como este,
+programados, pensados y hechos con tanto tiempo…
+pero quiero que sepas que este detalle me tomó
+casi dos meses en hacerlo.
+Desde que supe que era tu cumpleaños,
+me puse a pensar cómo sorprenderte,
+cómo hacer algo distinto,
+algo que se quedara contigo.
+</p>
+
+<p>
+Primero lo hice en la computadora,
+pero luego pensé:
+“no… quiero que esté en su teléfono,
+para que lo pueda ver cuando quiera,
+cuando lo necesite,
+cuando sonría,
+cuando recuerde”.
+</p>
+
+<p>
+Deseo de corazón que te la pases increíble en tu cumpleaños,
+sé que saldrás con tu familia y eso está perfecto,
+pero lo bonito fue que pude compartir una semana contigo,
+viendo películas y series,
+me viste jugar, jugamos juntos,
+y sí… me ganaste (pero porque te dejé 😌).
+</p>
+
+<p>
+Vimos “Los tuyos, los míos y los nuestros”,
+nos reímos,
+y pude darte el primer abrazo del día…
+ese sí se los gané a todos 😂
+</p>
+
+<p>
+No soy muy bueno expresándome en estos días,
+para mí es diferente,
+pero hoy no se trata de eso.
+Hoy se trata de ti.
+De que brilles,
+de que sonrías,
+de que celebres todo lo que eres.
+</p>
+
+<p>
+También quedan los recuerdos:
+subimos cerros en San Carlos,
+fuimos a correr,
+fuimos a un concierto,
+fui al béisbol contigo (nunca había ido),
+ahí andaba con el rollo en la mano 😂
+</p>
+
+<p>
+Y sí… llegué medio tomado,
+vomité dos veces,
+pero tú me cuidaste,
+me dijiste que no tomara de más,
+fui a tu fiesta “a mirar el terreno” 😏 (es broma).
+</p>
+
+<p>
+Todo eso somos,
+momentos reales,
+risas,
+aventuras,
+y recuerdos que valen oro.
+</p>
+
+<p>
+Quise hacerte este regalo programado,
+pero esto no es todo…
+todavía hay otra sorpresa para ti.
+No preguntes.
+Lo que no se espera,
+cuando llega,
+se disfruta más.
+</p>
+
+<p>
+Espero que te guste,
+que te haga sonreír,
+y que cada vez que lo abras
+recuerdes lo especial que eres para mí.
+</p>
+
+<div class="firma">
+<p>
+Con cariño 💖<br>
+Alguien que pensó en ti,<br>
+y quiso sorprenderte.
+</p>
+</div>
+
+</div>
+
+<script>
+const colores = ["#ff4d6d","#ffd166","#06d6a0","#118ab2","#ef476f"];
+
+for (let i = 0; i < 80; i++) {
+    let confeti = document.createElement("div");
+    confeti.className = "confeti";
+    confeti.style.left = Math.random() * 100 + "vw";
+    confeti.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    confeti.style.backgroundColor = colores[Math.floor(Math.random() * colores.length)];
+    document.body.appendChild(confeti);
+}
+</script>
+
+</body>
+</html>
