@@ -14,45 +14,78 @@ body {
 }
 
 .carta {
-    background: rgba(255,255,255,0.92);
+    background: rgba(255,255,255,0.93);
     max-width: 560px;
     margin: 30px auto;
-    padding: 32px 28px;
+    padding: 34px 30px;
     border-radius: 26px;
     box-shadow: 0 12px 30px rgba(0,0,0,0.18);
-    animation: aparecer 2s ease;
 }
 
+/* TITULOS */
 h1, h2 {
     text-align: center;
     color: #ff4d6d;
 }
 
 h2 {
-    margin-top: 35px;
+    margin-top: 40px;
     font-size: 22px;
 }
 
+/* TEXTO */
 p {
     font-size: 17px;
-    line-height: 1.85;
+    line-height: 1.9;
     color: #333;
-    text-align: center;
-    margin-bottom: 16px;
+    font-weight: bold;
+    text-align: justify;
+    margin-bottom: 18px;
+
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease;
 }
 
-.firma {
-    margin-top: 40px;
-    font-style: italic;
+p.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.firma p {
     text-align: center;
-    color: #555;
+}
+
+/* BOTÓN SECRETO */
+.secreto-btn {
+    margin: 40px auto 20px;
+    display: block;
+    padding: 14px 22px;
+    font-size: 17px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #ff4d6d, #ff8fab);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* MENSAJE SECRETO */
+.secreto {
+    display: none;
+    background: #fff0f4;
+    border-radius: 20px;
+    padding: 25px;
+    margin-top: 25px;
+    animation: aparecer 1s ease;
 }
 
 @keyframes aparecer {
-    from { opacity: 0; transform: translateY(25px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
 }
 
+/* FLOTANTES */
 .flotante {
     position: fixed;
     top: -10px;
@@ -79,187 +112,76 @@ p {
 <h2>📜 Una carta escrita solo para ti</h2>
 
 <p>Karen,</p>
-
-<p>
-Tal vez este mensaje llega un día después,  
-pero hay cosas que no pierden valor con el tiempo.  
-Cuando algo es sincero,  
-el momento correcto es cuando por fin se entrega.
-</p>
-
-<p>
-Quería que este regalo fuera diferente.  
-No algo comprado,  
-sino algo pensado,  
-hecho con calma,  
-con intención  
-y con mucho cariño.
-</p>
-
-<p>
-Desde que supe que se acercaba tu cumpleaños,  
-me puse a pensar cómo sorprenderte.  
-No fue fácil.  
-Me tomó casi dos meses pensar,  
-probar, equivocarme  
-y volver a intentar.
-</p>
-
-<p>
-Primero lo hice en la computadora,  
-pero luego pensé:  
-“no, quiero que esté en tu teléfono”.
-</p>
-
-<p>
-Para que lo tengas contigo,  
-para que lo veas cuando quieras,  
-cuando tengas un momento solo para ti  
-o cuando simplemente quieras sonreír.
-</p>
-
-<p>
-Porque no siempre te van a regalar cosas así,  
-y cuando alguien se toma el tiempo  
-de programar algo solo para ti,  
-es porque realmente le importas.
-</p>
+<p>Tal vez este mensaje llega un día después, pero hay cosas que no pierden valor con el tiempo. Cuando algo es sincero, el momento correcto es cuando por fin se entrega.</p>
+<p>Quería que este regalo fuera diferente. No algo comprado, sino algo pensado, hecho con calma, con intención y con mucho cariño.</p>
+<p>Desde que supe que se acercaba tu cumpleaños, me tomó casi dos meses pensar, probar, equivocarme y volver a intentar.</p>
+<p>Primero lo hice en la computadora, pero luego pensé: “no, quiero que esté en tu teléfono”.</p>
+<p>Para que lo tengas contigo, para que lo veas cuando quieras, cuando sonrías o cuando lo necesites.</p>
 
 <h2>✨ Sobre ti</h2>
 
-<p>
-Te gusta la fiesta  
-y tienes ese don de poner el ambiente  
-sin forzarlo,  
-simplemente siendo tú.
-</p>
-
-<p>
-Sabes cocinar,  
-y no solo comida,  
-también momentos,  
-hogar  
-y recuerdos.
-</p>
-
-<p>
-Eres mamá,  
-y eres una mamá increíble.  
-Tu hijo tiene mucha suerte de tenerte,  
-porque das amor, cuidado  
-y presencia de verdad.
-</p>
-
-<p>
-Y además de todo eso,  
-tienes una belleza que no pasa desapercibida.  
-Tu cabello,  
-tu cara,  
-tu sonrisa…  
-son de esas cosas que se quedan en la mente.
-</p>
+<p>Te gusta la fiesta, sabes poner el ambiente y simplemente siendo tú haces que todo se sienta mejor.</p>
+<p>Sabes cocinar momentos, hogar y recuerdos. Y eres una mamá increíble.</p>
+<p>Tu cabello, tu sonrisa y tu mirada son de esas cosas que se quedan en la mente.</p>
 
 <h2>📸 Momentos que atesoro</h2>
 
-<p>
-Subir cerros en San Carlos,  
-respirar hondo,  
-cansarnos  
-y aun así disfrutar cada paso.
-</p>
-
-<p>
-Salir a correr contigo,  
-aunque yo ya iba muriendo  
-y tú como si nada.
-</p>
-
-<p>
-Ir a un concierto juntos,  
-sentir la música,  
-el ambiente  
-y compartir ese momento.
-</p>
-
-<p>
-Esa vez que llegué medio pasado de copas,  
-vomité dos veces  
-y aun así me cuidaste.  
-Gracias por eso  
-(y prometo no tomar de más…  
-o al menos intentarlo 😅).
-</p>
-
-<p>
-Ir a tu fiesta “a mirar el terreno”,  
-jajaja,  
-es broma.
-</p>
-
-<p>
-Ir al béisbol contigo,  
-yo nunca había ido,  
-y ahí andaba con el rollo en la mano,  
-aprendiendo sobre la marcha.
-</p>
+<p>San Carlos, correr juntos, conciertos, el béisbol, llegar medio tomado y que aun así me cuidaras.</p>
+<p>Todo eso también es parte de lo nuestro.</p>
 
 <h2>📝 Un poema para tu día</h2>
 
-<p>
-Un veintiséis de enero el mundo entendió,  
-que alguien especial al tiempo llegó.  
-Veintiocho años de historia y verdad,  
-de fuerza, sonrisa y autenticidad.
-</p>
-
-<p>
-Que la vida te cuide  
-y te trate bonito,  
-porque alguien como tú  
-lo merece infinito.
-</p>
+<p>Un veintiséis de enero el mundo entendió, que alguien especial al tiempo llegó.</p>
+<p>Que la vida te cuide y te trate bonito, porque alguien como tú lo merece infinito.</p>
 
 <h2>💖 Cierre</h2>
 
-<p>
-Sé que hoy celebras con tu familia  
-y me alegra saberlo.  
-Yo solo quería ser parte de tu día  
-de esta forma.
-</p>
+<p>Hoy es tu día. Hoy te toca brillar.</p>
 
-<p>
-No siempre soy bueno expresando todo esto,  
-pero hoy no es momento de eso.  
-Hoy es tu día.  
-Hoy te toca brillar.
-</p>
+<button class="secreto-btn" onclick="mostrarSecreto()">
+🔒 Toca aquí para desbloquear el mensaje secreto
+</button>
 
+<div class="secreto" id="mensajeSecreto">
 <p>
-Y sí…  
-todavía hay otra sorpresa.  
-No preguntes.  
-Las mejores cosas llegan  
-cuando no las esperas.
-</p>
-
-<div class="firma">
-<p>
-💖 Feliz cumpleaños, Karen 💖<br>
-Que la vida te regrese todo lo bonito que das.
-</p>
-
-<p>
-— Con cariño,<br>
-alguien que pensó en ti,<br>
-lo escribió<br>
-y lo programó solo para ti 💻❤️
+Karen…<br><br>
+Este mensaje no estaba pensado para cualquiera.<br>
+Solo para ti.<br><br>
+Quería que supieras que me importas más de lo que a veces sé decir,
+y que cada línea aquí tiene intención, tiempo y cariño.<br><br>
+Este no es solo un regalo,
+es una forma de decir:
+“estoy aquí,
+pensé en ti,
+y quise hacer algo especial solo para ti”.<br><br>
+Y sí… la otra sorpresa todavía viene.
 </p>
 </div>
+
+<p class="firma">
+💖 Feliz cumpleaños, Karen 💖<br>
+— Con cariño,<br>
+alguien que lo escribió<br>
+y lo programó solo para ti 💻❤️
+</p>
 
 </div>
 
 <script>
+// Animar texto
+const parrafos = document.querySelectorAll("p");
+parrafos.forEach((p, i) => {
+    setTimeout(() => {
+        p.classList.add("visible");
+    }, i * 250);
+});
+
+// Mostrar mensaje secreto
+function mostrarSecreto() {
+    document.getElementById("mensajeSecreto").style.display = "block";
+}
+
+// Confeti, flores y corazones
 const simbolos = ["🎉","❤️","💖","🌸","🌷","🌹","✨"];
 for (let i = 0; i < 100; i++) {
     let e = document.createElement("div");
