@@ -1,284 +1,336 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<title>Feliz Cumpleaños Karen 💖</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Feliz Cumpleaños Karen 💖</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    background: url("fondo.png") no-repeat center center fixed;
-    background-size: cover;
-}
+    <style>
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            background: url("fondo.png") no-repeat center center fixed;
+            background-size: cover;
+        }
 
-.carta {
-    background: rgba(255,255,255,0.93);
-    max-width: 560px;
-    margin: 30px auto;
-    padding: 34px 30px;
-    border-radius: 26px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.18);
-}
+        .carta {
+            background: rgba(255, 255, 255, 0.93);
+            max-width: 560px;
+            margin: 30px auto;
+            padding: 34px 30px;
+            border-radius: 26px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+        }
 
-/* TITULOS */
-h1, h2 {
-    text-align: center;
-    color: #ff4d6d;
-}
+        /* TITULOS */
+        h1,
+        h2 {
+            text-align: center;
+            color: #ff4d6d;
+        }
 
-h2 {
-    margin-top: 40px;
-    font-size: 22px;
-}
+        h2 {
+            margin-top: 40px;
+            font-size: 22px;
+        }
 
-/* TEXTO */
-p {
-    font-size: 17px;
-    line-height: 1.9;
-    color: #333;
-    font-weight: bold;
-    text-align: justify;
-    margin-bottom: 18px;
+        /* TEXTO */
+        p {
+            font-size: 17px;
+            line-height: 1.9;
+            color: #333;
+            font-weight: bold;
+            text-align: justify;
+            margin-bottom: 18px;
 
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.8s ease;
-}
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
 
-p.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+        p.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-.firma p {
-    text-align: center;
-}
+        .firma p {
+            text-align: center;
+        }
 
-/* BOTÓN SECRETO */
-.secreto-btn {
-    margin: 40px auto 20px;
-    display: block;
-    padding: 14px 22px;
-    font-size: 17px;
-    border: none;
-    border-radius: 30px;
-    background: linear-gradient(135deg, #ff4d6d, #ff8fab);
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-}
+        /* BOTÓN SECRETO */
+        .secreto-btn {
+            margin: 40px auto 20px;
+            display: block;
+            padding: 14px 22px;
+            font-size: 17px;
+            border: none;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #ff4d6d, #ff8fab);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
 
-.secreto-btn.latido {
-    animation: latido 1.4s infinite;
-}
+        .secreto-btn.latido {
+            animation: latido 1.4s infinite;
+        }
 
-@keyframes latido {
-    0% { transform: scale(1); }
-    30% { transform: scale(1.05); }
-    60% { transform: scale(1); }
-}
+        @keyframes latido {
+            0% {
+                transform: scale(1);
+            }
 
-/* FONDO ANIMADO MENSAJE SECRETO */
+            30% {
+                transform: scale(1.05);
+            }
 
-.secreto {
-    display: none;
-    margin-top: 20px;
-    padding: 22px;
-    border-radius: 18px;
-}
-.carta > p:nth-of-type(1),
-.carta > p:nth-of-type(2) {
-    text-align: center;
-}
+            60% {
+                transform: scale(1);
+            }
+        }
 
+        /* FONDO ANIMADO MENSAJE SECRETO */
 
-.secreto {
-    background: linear-gradient(
-        120deg,
-        #fff0f4,
-        #ffe6ee,
-        #fff0f4
-    );
-    background-size: 400% 400%;
-    animation: fondoMagico 6s ease infinite;
-}
+        .secreto {
+            display: none;
+            margin-top: 20px;
+            padding: 22px;
+            border-radius: 18px;
+        }
 
-@keyframes fondoMagico {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
+        .carta>p:nth-of-type(1),
+        .carta>p:nth-of-type(2) {
+            text-align: center;
+        }
 
 
-/* FLOTANTES */
-.flotante {
-    position: fixed;
-    top: -10px;
-    animation: caer linear infinite;
-    opacity: 0.9;
-}
+        .secreto {
+            background: linear-gradient(120deg,
+                    #fff0f4,
+                    #ffe6ee,
+                    #fff0f4);
+            background-size: 400% 400%;
+            animation: fondoMagico 6s ease infinite;
+        }
 
-@keyframes caer {
-    to {
-        transform: translateY(110vh) rotate(360deg);
-    }
-}
-</style>
+        .secreto p {
+            opacity: 0;
+            transform: scale(0.95);
+            animation: aparecerTexto 0.8s ease forwards;
+        }
+
+        @keyframes aparecerTexto {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fondoMagico {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+
+        /* FLOTANTES */
+        .flotante {
+            position: fixed;
+            top: -10px;
+            animation: caer linear infinite;
+            opacity: 0.9;
+        }
+
+        @keyframes caer {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="carta">
+    <div class="carta">
 
-<h1>💖 FELIZ CUMPLEAÑOS 💖</h1>
+        <h1>💖 FELIZ CUMPLEAÑOS 💖</h1>
 
-<p>KAREN CLARISSA WONG MOLINA</p>
-<p>🎂 26 de enero — 28 años 🎂</p>
+        <p>KAREN CLARISSA WONG MOLINA</p>
+        <p>🎂 26 de enero — 28 años 🎂</p>
 
-<p>Karen,</p>
+        <p>Karen,</p>
 
-<p>Tal vez este mensaje llega un día después, pero hay cosas que no pierden valor con el tiempo.</p>
-<p>Cuando algo es sincero, el momento correcto es cuando por fin se entrega.</p>
+        <p>Tal vez este mensaje llega un día después, pero hay cosas que no pierden valor con el tiempo.</p>
+        <p>Cuando algo es sincero, el momento correcto es cuando por fin se entrega.</p>
 
-<p>Quería que este regalo fuera diferente.</p>
-<p>No algo comprado, sino algo pensado, algo hecho con calma, con intención y con mucho cariño.</p>
+        <p>Quería que este regalo fuera diferente.</p>
+        <p>No algo comprado, sino algo pensado, algo hecho con calma, con intención y con mucho cariño.</p>
 
-<p>Desde que supe que se acercaba tu cumpleaños, me puse a pensar cómo sorprenderte.</p>
-<p>No fue fácil, de hecho, me tomó casi dos meses pensar, probar, equivocarme y volver a intentar.</p>
+        <p>Desde que supe que se acercaba tu cumpleaños, me puse a pensar cómo sorprenderte.</p>
+        <p>No fue fácil, de hecho, me tomó casi dos meses pensar, probar, equivocarme y volver a intentar.</p>
 
-<p>Primero lo hice en la computadora, pero luego pensé:</p>
-<p>«No, quiero que esté en tu teléfono».</p>
+        <p>Primero lo hice en la computadora, pero luego pensé:</p>
+        <p>«No, quiero que esté en tu teléfono».</p>
 
-<p>Para que lo tengas contigo, para que lo veas cuando quieras, cuando tengas un momento solo para ti o cuando simplemente quieras sonreír.</p>
+        <p>Para que lo tengas contigo, para que lo veas cuando quieras, cuando tengas un momento solo para ti o cuando
+            simplemente quieras sonreír.</p>
 
-<p>Porque no siempre te van a regalar cosas así, y cuando alguien se toma el tiempo de programar algo solo para ti, es porque realmente le importas.</p>
+        <p>Porque no siempre te van a regalar cosas así, y cuando alguien se toma el tiempo de programar algo solo para
+            ti, es porque realmente le importas.</p>
 
-<h2>✨ Sobre ti</h2>
+        <h2>✨ Sobre ti</h2>
 
-<p>Hay muchas cosas que te hacen especial.</p>
-<p>Te gusta la fiesta y tienes ese don de poner el ambiente sin forzarlo, simplemente siendo tú.</p>
+        <p>Hay muchas cosas que te hacen especial.</p>
+        <p>Te gusta la fiesta y tienes ese don de poner el ambiente sin forzarlo, simplemente siendo tú.</p>
 
-<p>Sabes cocinar, y no solo comida, también momentos, hogar y recuerdos.</p>
+        <p>Sabes cocinar, y no solo comida, también momentos, hogar y recuerdos.</p>
 
-<p>Eres mamá y eres una mamá increíble.</p>
-<p>Tu hijo tiene mucha suerte de tenerte, porque das amor, cuidado y presencia de verdad.</p>
+        <p>Eres mamá y eres una mamá increíble.</p>
+        <p>Tu hijo tiene mucha suerte de tenerte, porque das amor, cuidado y presencia de verdad.</p>
 
-<p>Y además de todo eso, tienes una belleza que no pasa desapercibida.</p>
-<p>Tu cabello, tu cara y tu sonrisa son de esas cosas que se quedan en la mente.</p>
+        <p>Y además de todo eso, tienes una belleza que no pasa desapercibida.</p>
+        <p>Tu cabello, tu cara y tu sonrisa son de esas cosas que se quedan en la mente.</p>
 
-<h2>📸 Momentos que atesoro</h2>
+        <h2>📸 Momentos que atesoro</h2>
 
-<p>Me encanta todo lo que hemos vivido juntos.</p>
+        <p>Me encanta todo lo que hemos vivido juntos.</p>
 
-<p>Desde subir cerros en San Carlos, respirar hondo, cansarnos y aun así disfrutar cada paso.</p>
+        <p>Desde subir cerros en San Carlos, respirar hondo, cansarnos y aun así disfrutar cada paso.</p>
 
-<p>Salir a correr contigo, aunque a veces yo ya iba muriendo y tú como si nada.</p>
+        <p>Salir a correr contigo, aunque a veces yo ya iba muriendo y tú como si nada.</p>
 
-<p>Ir a un concierto juntos, sentir la música, el ambiente y compartir ese momento.</p>
+        <p>Ir a un concierto juntos, sentir la música, el ambiente y compartir ese momento.</p>
 
-<p>Y sí… esa vez que llegué medio pasado de copas, vomité dos veces y aun así me cuidaste.</p>
+        <p>Y sí… esa vez que llegué medio pasado de copas, vomité dos veces y aun así me cuidaste.</p>
 
-<p>Gracias por eso, y prometo no volver a tomar de más (o al menos intentarlo 😅).</p>
+        <p>Gracias por eso, y prometo no volver a tomar de más (o al menos intentarlo 😅).</p>
 
-<p>También fui a tu fiesta, según yo para mirar el terreno… jajaja, es broma.</p>
+        <p>También fui a tu fiesta, según yo para mirar el terreno… jajaja, es broma.</p>
 
-<p>Fuimos al béisbol, yo nunca había ido y ahí andaba, con el rollo en la mano, aprendiendo sobre la marcha.</p>
+        <p>Fuimos al béisbol, yo nunca había ido y ahí andaba, con el rollo en la mano, aprendiendo sobre la marcha.</p>
 
-<h2>📝 Un poema para tu día</h2>
+        <h2>📝 Un poema para tu día</h2>
 
-<p>Un veintiséis de enero el mundo entendió, que alguien especial al tiempo llegó.</p>
-<p>Veintiocho años de historia y verdad, de fuerza, sonrisa y autenticidad.</p>
-<p>Que la vida te cuide y te trate bonito, porque alguien como tú lo merece infinito.</p>
+        <p>Un veintiséis de enero el mundo entendió, que alguien especial al tiempo llegó.</p>
+        <p>Veintiocho años de historia y verdad, de fuerza, sonrisa y autenticidad.</p>
+        <p>Que la vida te cuide y te trate bonito, porque alguien como tú lo merece infinito.</p>
 
-<p>Sé que hoy celebras con tu familia y me alegra saberlo.</p>
-<p>Yo solo quería ser parte de tu día de esta forma.</p>
+        <p>Sé que hoy celebras con tu familia y me alegra saberlo.</p>
+        <p>Yo solo quería ser parte de tu día de esta forma.</p>
 
-<p>No siempre soy bueno expresando todo esto, pero hoy no es momento de eso.</p>
-<p>Hoy es tu día.</p>
-<p>Hoy te toca brillar.</p>
+        <p>No siempre soy bueno expresando todo esto, pero hoy no es momento de eso.</p>
+        <p>Hoy es tu día.</p>
+        <p>Hoy te toca brillar.</p>
 
-<p>Y sí, todavía hay otra sorpresa.</p>
-<p>No preguntes.</p>
-<p>Las mejores cosas llegan cuando no las esperas.</p>
+        <p>Y sí, todavía hay otra sorpresa.</p>
+        <p>No preguntes.</p>
+        <p>Las mejores cosas llegan cuando no las esperas.</p>
 
-<button class="secreto-btn" onclick="mostrarSecreto()">
-🔒 Toca aquí para desbloquear el mensaje secreto
-</button>
+        <button class="secreto-btn" onclick="mostrarSecreto()">
+            🔒 Toca aquí para desbloquear el mensaje secreto
+        </button>
 
-<div class="secreto" id="mensajeSecreto">
-<p>
-Karen…<br><br>
-Esto no es solo un regalo.<br>
-Es tiempo, intención y cariño convertidos en algo que puedes guardar.<br><br>
-Gracias por ser tú.<br><br>
-— Con cariño,<br>
-alguien que pensó en ti,<br>
-lo escribió,<br>
-y lo programó solo para ti 💻❤️
-</p>
-</div>
+        <div class="secreto" id="mensajeSecreto">
+            <p>
+                Karen…<br><br>
+                Esto no es solo un regalo.<br>
+                Es tiempo, intención y cariño convertidos en algo que puedes guardar.<br><br>
+                Gracias por ser tú.<br><br>
+                — Con cariño,<br>
+                alguien que pensó en ti,<br>
+                lo escribió,<br>
+                y lo programó solo para ti 💻❤️
+            </p>
+        </div>
 
-<p class="firma">
-💖 Feliz cumpleaños, Karen 💖<br>
-Que la vida te regrese todo lo bonito que das.
-</p>
+        <p class="firma">
+            💖 Feliz cumpleaños, Karen 💖<br>
+            Que la vida te regrese todo lo bonito que das.
+        </p>
 
-</div>
+    </div>
 
-<script>
-let abierto = false;
+    <script>
+        let abierto = false;
 
-function mostrarSecreto() {
-    const secreto = document.getElementById("mensajeSecreto");
-    const boton = document.querySelector(".secreto-btn");
-    const audio = document.getElementById("clickRomantico");
+        function mostrarSecreto() {
+            const secreto = document.getElementById("mensajeSecreto");
+            const boton = document.querySelector(".secreto-btn");
+            const audio = document.getElementById("clickRomantico");
 
-    // Sonido romántico
-    audio.currentTime = 0;
-    audio.play();
+            // Sonido romántico
+            audio.currentTime = 0;
+            audio.play();
 
-    // Vibración suave
-    if (navigator.vibrate) {
-        navigator.vibrate([35, 25, 35]);
-    }
+            // Vibración suave
+            if (navigator.vibrate) {
+                navigator.vibrate([35, 25, 35]);
+            }
 
-    if (!abierto) {
-        secreto.style.display = "block";
-        boton.innerText = "💖 Toca para cerrar el mensaje secreto";
-        boton.classList.remove("latido");
-        abierto = true;
-    } else {
-        secreto.style.display = "none";
-        boton.innerText = "🔒 Toca aquí para desbloquear el mensaje secreto";
-        boton.classList.add("latido");
-        abierto = false;
+            if (!abierto) {
+                secreto.style.display = "block";
+                lanzarFlotantes(); // 💖🎉🌸
+                boton.innerText = "💖 Toca para cerrar el mensaje secreto";
+                boton.classList.remove("latido");
+                abierto = true;
+            } else {
+                secreto.style.display = "none";
+                boton.innerText = "🔒 Toca aquí para desbloquear el mensaje secreto";
+                boton.classList.add("latido");
+                abierto = false;
+            }
+        }
+        function lanzarFlotantes() {
+    const emojis = ["💖","🌸","🎉","❤️","🌺"];
+    const cantidad = 25;
+
+    for (let i = 0; i < cantidad; i++) {
+        const el = document.createElement("div");
+        el.classList.add("flotante");
+        el.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+
+        el.style.left = Math.random() * 100 + "vw";
+        el.style.fontSize = (18 + Math.random() * 22) + "px";
+        el.style.animationDuration = (4 + Math.random() * 4) + "s";
+
+        document.body.appendChild(el);
+
+        setTimeout(() => el.remove(), 8000);
     }
 }
 
-// Activar latido inicial
-document.querySelector(".secreto-btn").classList.add("latido");
-</script>
+        // Activar latido inicial
+        document.querySelector(".secreto-btn").classList.add("latido");
+    </script>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const parrafos = document.querySelectorAll(".carta > p, .carta h2 + p");
-
-
-    parrafos.forEach((p, index) => {
-        setTimeout(() => {
-            p.classList.add("visible");
-        }, index * 180);
-    });
-});
-</script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const parrafos = document.querySelectorAll(".carta > p, .carta h2 + p");
 
 
-<audio id="clickRomantico" preload="auto">
-    <source src="https://assets.mixkit.co/sfx/preview/mixkit-soft-click-tone-1112.mp3" type="audio/mpeg">
-</audio>
+            parrafos.forEach((p, index) => {
+                setTimeout(() => {
+                    p.classList.add("visible");
+                }, index * 180);
+            });
+        });
+    </script>
+
+
+    <audio id="clickRomantico" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-soft-click-tone-1112.mp3" type="audio/mpeg">
+    </audio>
 
 
 </body>
+
 </html>
