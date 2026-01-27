@@ -81,6 +81,19 @@ p.visible {
 }
 
 /* FONDO ANIMADO MENSAJE SECRETO */
+
+.secreto {
+    display: none;
+    margin-top: 20px;
+    padding: 22px;
+    border-radius: 18px;
+}
+.carta > p:nth-of-type(1),
+.carta > p:nth-of-type(2) {
+    text-align: center;
+}
+
+
 .secreto {
     background: linear-gradient(
         120deg,
@@ -247,6 +260,20 @@ function mostrarSecreto() {
 // Activar latido inicial
 document.querySelector(".secreto-btn").classList.add("latido");
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const parrafos = document.querySelectorAll(".carta > p, .carta h2 + p");
+
+
+    parrafos.forEach((p, index) => {
+        setTimeout(() => {
+            p.classList.add("visible");
+        }, index * 180);
+    });
+});
+</script>
+
 
 <audio id="clickRomantico" preload="auto">
     <source src="https://assets.mixkit.co/sfx/preview/mixkit-soft-click-tone-1112.mp3" type="audio/mpeg">
