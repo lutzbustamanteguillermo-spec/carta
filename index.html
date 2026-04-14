@@ -1,237 +1,237 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<title>Para ti ❤️</title>
-
-<style>
-body{
-    margin:0;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(135deg,#6b4f3a,#c8a27c);
-    font-family:'Segoe UI',sans-serif;
-    overflow:hidden;
-}
-
-/* INPUT */
-#login{
-    text-align:center;
-    color:white;
-}
-
-input{
-    padding:10px;
-    border-radius:10px;
-    border:none;
-    margin-top:10px;
-    width:250px;
-}
-
-button{
-    margin-top:15px;
-    padding:10px 20px;
-    border:none;
-    border-radius:20px;
-    background:#8b5e3c;
-    color:white;
-    cursor:pointer;
-}
-
-/* CARTA */
-.carta{
-    display:none;
-    background:#fff;
-    padding:40px;
-    border-radius:20px;
-    width:500px;
-    text-align:center;
-    box-shadow:0 10px 30px rgba(0,0,0,0.3);
-    animation:fadeIn 1.5s ease;
-}
-
-h1{
-    color:#8b5e3c;
-}
-
-@keyframes fadeIn{
-    from{opacity:0; transform:scale(0.8);}
-    to{opacity:1; transform:scale(1);}
-}
-
-/* BOTON SORPRESA */
-#sorpresa{
-    display:none;
-    margin-top:20px;
-    background:#a47148;
-}
-
-/* CORAZONES */
-.corazon{
-    position:fixed;
-    color:red;
-    animation:flotar 5s linear infinite;
-}
-
-@keyframes flotar{
-    0%{transform:translateY(100vh);}
-    100%{transform:translateY(-10vh);}
-}
-</style>
-</head>
-
-<body>
-
-<!-- LOGIN -->
-<div id="login">
-    <h2>💌 Tengo algo para ti</h2>
-    <p>Ingresa tu nombre completo para abrirlo</p>
-    <input id="nombre" placeholder="Tu nombre completo">
-    <br>
-    <button onclick="verificar()">Abrir carta</button>
-</div>
-
-<!-- CARTA -->
-<div class="carta" id="carta">
-    <h1>Hola Denin 😊</h1>
-
-    <p>
-        No sabía cómo hacer esto especial, pero quería que fuera algo diferente...
-        algo que se sintiera tan sencillo y bonito como tú.
-    </p>
-
-    <p>
-        Me gusta tu forma tranquila de ser, tu manera de ver la vida,
-        y esa esencia tan natural que tienes, como si fueras parte del otoño 🍂,
-        de esos momentos donde todo se siente en calma.
-    </p>
-
-    <p>
-        Admiro mucho lo que haces, tu dedicación,
-        tu inteligencia como ingeniera y ahora en tu maestría…
-        pero más allá de eso, me gusta la persona que eres.
-    </p>
-
-    <p>
-        Tal vez eres un poco misteriosa… y no está mal,
-        de hecho creo que eso es parte de lo que te hace tan interesante.
-    </p>
-
-    <p>
-        Solo quería decirte que me gusta conocerte,
-        a tu ritmo, sin prisas… como el café que se disfruta despacio ☕
-    </p>
-
-    <button id="sorpresa" onclick="mostrarSorpresa()">Haz clic aquí 💌</button>
-
-    <p id="extra" style="display:none; margin-top:15px;">
-        Y la verdad… me encantaría seguir descubriendo más de ti ❤️
-    </p>
-
-    <p><strong>— Alguien que quiere seguir conociéndote</strong></p>
-</div>
-
-<script>
-function verificar(){
-    let nombre = document.getElementById("nombre").value.toLowerCase().trim();
-
-    if(nombre === "denin aldrete garcia"){
-        document.getElementById("login").style.display="none";
-        document.getElementById("carta").style.display="block";
-        document.getElementById("sorpresa").style.display="inline-block";
-        lanzarCorazones();
-    }else{
-        alert("Ups… ese no es el nombre correcto 😏");
-    }
-}
-
-function mostrarSorpresa(){
-    document.getElementById("extra").style.display="block";
-}
-
-/* corazones */
-function lanzarCorazones(){
-    setInterval(()=>{
-        let corazon = document.createElement("div");
-        corazon.className="corazon";
-        corazon.innerHTML="❤️";
-        corazon.style.left=Math.random()*100+"vw";
-        corazon.style.fontSize=(Math.random()*20+10)+"px";
-        document.body.appendChild(corazon);
-
-        setTimeout(()=>{corazon.remove();},5000);
-    },300);
-}
-</script>
-
-</body>
-=======
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Para ti ❤️</title>
+    <title>Para ti 🍂</title>
+
     <style>
         body {
-            background: linear-gradient(to right, #ff9a9e, #fad0c4);
-            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Un fondo con tonos otoñales cálidos */
+            background: linear-gradient(135deg, #8b5e3c, #d4a373, #faedcb);
+            background-size: 200% 200%;
+            font-family: 'Segoe UI', sans-serif;
+            overflow: hidden;
+            animation: gradientAnim 10s ease infinite;
+        }
+
+        @keyframes gradientAnim {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* INPUT */
+        #login {
             text-align: center;
-            padding: 50px;
-            color: #333;
-        }
-        .carta {
-            background: white;
-            padding: 30px;
+            color: #fff;
+            background: rgba(92, 58, 33, 0.8);
+            padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            max-width: 600px;
-            margin: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
+            z-index: 10;
         }
-        h1 {
-            color: #ff4d6d;
+
+        #login h2 {
+            margin-top: 0;
+        }
+
+        input {
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            margin-top: 10px;
+            width: 250px;
+            font-size: 16px;
+            outline: none;
+            text-align: center;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 20px;
+            background: #d4a373;
+            color: #5c3a21;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background: #faedcb;
+            transform: scale(1.05);
+        }
+
+        /* CARTA */
+        .carta {
+            display: none;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            width: 500px;
+            max-width: 90%;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            animation: fadeIn 1.5s ease;
+            z-index: 10;
+            color: #4a3627;
+        }
+
+        .carta h1 {
+            color: #8b5e3c;
+            margin-bottom: 20px;
+        }
+
+        .carta p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 17px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px) scale(0.9); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* BOTON SORPRESA */
+        #sorpresa {
+            display: none;
+            margin-top: 20px;
+            background: #8b5e3c;
+            color: white;
+        }
+
+        #sorpresa:hover {
+            background: #6b4f3a;
+        }
+
+        #extra {
+            font-size: 18px;
+            color: #d64045;
+            font-weight: bold;
+        }
+
+        /* HOJAS DE OTOÑO */
+        .hoja {
+            position: fixed;
+            top: -10vh; /* Empiezan arriba de la pantalla */
+            z-index: 1;
+            pointer-events: none;
+            animation: caer linear forwards;
+        }
+
+        @keyframes caer {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
         }
     </style>
 </head>
+
 <body>
 
-<div class="carta">
-    <h1>Hola 😊</h1>
-    <p>
-        No soy muy bueno diciendo esto en persona,
-        pero desde que te empecé a conocer,
-        algo cambió en mi día a día.
-    </p>
+    <div id="login">
+        <h2>💌 Tengo algo para ti</h2>
+        <p>Ingresa tu nombre completo para abrirlo</p>
+        <input id="nombre" placeholder="Tu nombre completo">
+        <br>
+        <button onclick="verificar()">Abrir carta</button>
+    </div>
 
-    <p>
-        Me gusta tu forma de ser, tu sonrisa
-        y la manera en la que haces que todo
-        se sienta más ligero.
-    </p>
+    <div class="carta" id="carta">
+        <h1>Hola Denin 😊</h1>
 
-    <p>
-        Apenas estamos empezando a conocernos,
-        pero quería hacer algo diferente para ti.
-    </p>
+        <p>
+            No sabía cómo hacer esto especial, pero quería que fuera algo diferente...
+            algo que se sintiera tan sencillo y bonito como tú.
+        </p>
 
-    <p>
-        Espero que esto te saque una sonrisa ❤️
-    </p>
+        <p>
+            Me gusta tu forma tranquila de ser, tu manera de ver la vida,
+            y esa esencia tan natural que tienes, como si fueras parte del otoño 🍂,
+            de esos momentos donde todo se siente en calma.
+        </p>
 
-    <p><strong>— De alguien que quiere seguir conociéndote</strong></p>
-</div>
+        <p>
+            Admiro mucho lo que haces, tu dedicación,
+            tu inteligencia como ingeniera y ahora en tu maestría…
+            pero más allá de eso, me gusta la persona que eres.
+        </p>
 
-</body>
->>>>>>> a53f10dd5b925e9a0ae1e60f7d695c7569139ece
-ize=(Math.random()*20+10)+"px";
-        document.body.appendChild(corazon);
+        <p>
+            Tal vez eres un poco misteriosa… y no está mal,
+            de hecho creo que eso es parte de lo que te hace tan interesante.
+        </p>
 
-        setTimeout(()=>{corazon.remove();},5000);
-    },300);
-}
-</script>
+        <p>
+            Solo quería decirte que me gusta conocerte,
+            a tu ritmo, sin prisas… como el café que se disfruta despacio ☕
+        </p>
+
+        <button id="sorpresa" onclick="mostrarSorpresa()">Haz clic aquí 💌</button>
+
+        <p id="extra" style="display:none; margin-top:20px;">
+            Y la verdad… me encantaría seguir descubriendo más de ti ❤️
+        </p>
+
+        <p style="margin-top: 30px;"><strong>— Alguien que quiere seguir conociéndote</strong></p>
+    </div>
+
+    <script>
+        function verificar() {
+            let nombre = document.getElementById("nombre").value.toLowerCase().trim();
+
+            if (nombre === "denin aldrete garcia") {
+                document.getElementById("login").style.display = "none";
+                document.getElementById("carta").style.display = "block";
+                document.getElementById("sorpresa").style.display = "inline-block";
+                lanzarHojas();
+            } else {
+                alert("Ups… ese no es el nombre correcto 😏");
+            }
+        }
+
+        function mostrarSorpresa() {
+            document.getElementById("extra").style.display = "block";
+            document.getElementById("sorpresa").style.display = "none"; // Oculta el botón para que se vea más limpio
+        }
+
+        /* Animación de hojas de otoño */
+        function lanzarHojas() {
+            const tiposDeHojas = ["🍂", "🍁", "🍃"]; // Diferentes hojas
+
+            setInterval(() => {
+                let hoja = document.createElement("div");
+                hoja.className = "hoja";
+                
+                // Selecciona una hoja al azar
+                hoja.innerHTML = tiposDeHojas[Math.floor(Math.random() * tiposDeHojas.length)];
+                
+                // Posición horizontal aleatoria
+                hoja.style.left = Math.random() * 100 + "vw";
+                
+                // Tamaño aleatorio
+                hoja.style.fontSize = (Math.random() * 20 + 15) + "px";
+                
+                // Velocidad de caída aleatoria (entre 5 y 10 segundos)
+                hoja.style.animationDuration = (Math.random() * 5 + 5) + "s";
+                
+                document.body.appendChild(hoja);
+
+                // Elimina la hoja después de que cae para no saturar la memoria
+                setTimeout(() => { hoja.remove(); }, 10000);
+            }, 400); // Crea una hoja nueva cada 400 milisegundos
+        }
+    </script>
 
 </body>
 </html>
