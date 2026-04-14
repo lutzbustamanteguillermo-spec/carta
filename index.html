@@ -1,361 +1,170 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Feliz Cumpleaños Karen 💖</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Para ti ❤️</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-            background: url("fondo.png") no-repeat center center fixed;
-            background-size: cover;
-        }
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#6b4f3a,#c8a27c);
+    font-family:'Segoe UI',sans-serif;
+    overflow:hidden;
+}
 
-        .carta {
-            background: rgba(255, 255, 255, 0.93);
-            max-width: 560px;
-            margin: 30px auto;
-            padding: 34px 30px;
-            border-radius: 26px;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
-        }
+/* INPUT */
+#login{
+    text-align:center;
+    color:white;
+}
 
-        /* TITULOS */
-        h1,
-        h2 {
-            text-align: center;
-            color: #ff4d6d;
-        }
+input{
+    padding:10px;
+    border-radius:10px;
+    border:none;
+    margin-top:10px;
+    width:250px;
+}
 
-        h2 {
-            margin-top: 40px;
-            font-size: 22px;
-        }
+button{
+    margin-top:15px;
+    padding:10px 20px;
+    border:none;
+    border-radius:20px;
+    background:#8b5e3c;
+    color:white;
+    cursor:pointer;
+}
 
-        /* TEXTO */
-        p {
-            font-size: 17px;
-            line-height: 1.9;
-            color: #333;
-            font-weight: bold;
-            text-align: justify;
-            margin-bottom: 18px;
+/* CARTA */
+.carta{
+    display:none;
+    background:#fff;
+    padding:40px;
+    border-radius:20px;
+    width:500px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    animation:fadeIn 1.5s ease;
+}
 
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease;
-        }
+h1{
+    color:#8b5e3c;
+}
 
-        p.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+@keyframes fadeIn{
+    from{opacity:0; transform:scale(0.8);}
+    to{opacity:1; transform:scale(1);}
+}
 
-        .firma p {
-            text-align: center;
-        }
+/* BOTON SORPRESA */
+#sorpresa{
+    display:none;
+    margin-top:20px;
+    background:#a47148;
+}
 
-        /* BOTÓN SECRETO */
-        .secreto-btn {
-            margin: 40px auto 20px;
-            display: block;
-            padding: 14px 22px;
-            font-size: 17px;
-            border: none;
-            border-radius: 30px;
-            background: linear-gradient(135deg, #ff4d6d, #ff8fab);
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-        }
+/* CORAZONES */
+.corazon{
+    position:fixed;
+    color:red;
+    animation:flotar 5s linear infinite;
+}
 
-        .secreto-btn.latido {
-            animation: latido 1.4s infinite;
-        }
-
-        @keyframes latido {
-            0% {
-                transform: scale(1);
-            }
-
-            30% {
-                transform: scale(1.05);
-            }
-
-            60% {
-                transform: scale(1);
-            }
-        }
-
-        /* FONDO ANIMADO MENSAJE SECRETO */
-
-        .secreto {
-            display: none;
-            margin-top: 20px;
-            padding: 22px;
-            border-radius: 18px;
-        }
-
-        .carta>p:nth-of-type(1),
-        .carta>p:nth-of-type(2) {
-            text-align: center;
-        }
-
-
-        .secreto {
-            background: linear-gradient(120deg,
-                    #fff0f4,
-                    #ffe6ee,
-                    #fff0f4);
-            background-size: 400% 400%;
-            animation: fondoMagico 6s ease infinite;
-        }
-
-        .secreto p {
-            opacity: 0;
-            transform: scale(0.95);
-            animation: aparecerTexto 0.8s ease forwards;
-        }
-
-        @keyframes aparecerTexto {
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes fondoMagico {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-
-        /* FLOTANTES */
-        .flotante {
-            position: fixed;
-            top: -10px;
-            animation: caer linear infinite;
-            opacity: 0.9;
-        }
-
-        @keyframes caer {
-            to {
-                transform: translateY(110vh) rotate(360deg);
-            }
-        }
-    </style>
+@keyframes flotar{
+    0%{transform:translateY(100vh);}
+    100%{transform:translateY(-10vh);}
+}
+</style>
 </head>
 
 <body>
 
-    <div class="carta">
+<!-- LOGIN -->
+<div id="login">
+    <h2>💌 Tengo algo para ti</h2>
+    <p>Ingresa tu nombre completo para abrirlo</p>
+    <input id="nombre" placeholder="Tu nombre completo">
+    <br>
+    <button onclick="verificar()">Abrir carta</button>
+</div>
 
-        <h1>💖 FELIZ CUMPLEAÑOS 💖</h1>
+<!-- CARTA -->
+<div class="carta" id="carta">
+    <h1>Hola Denin 😊</h1>
 
-        <p>KAREN CLARISSA WONG MOLINA</p>
-        <p>🎂 26 de enero — 28 años 🎂</p>
+    <p>
+        No sabía cómo hacer esto especial, pero quería que fuera algo diferente...
+        algo que se sintiera tan sencillo y bonito como tú.
+    </p>
 
-        <p>Karen,</p>
+    <p>
+        Me gusta tu forma tranquila de ser, tu manera de ver la vida,
+        y esa esencia tan natural que tienes, como si fueras parte del otoño 🍂,
+        de esos momentos donde todo se siente en calma.
+    </p>
 
-        <p>Tal vez este mensaje llega un día después, pero hay cosas que no pierden valor con el tiempo.</p>
-        <p>Cuando algo es sincero, el momento correcto es cuando por fin se entrega.</p>
+    <p>
+        Admiro mucho lo que haces, tu dedicación,
+        tu inteligencia como ingeniera y ahora en tu maestría…
+        pero más allá de eso, me gusta la persona que eres.
+    </p>
 
-        <p>Quería que este regalo fuera diferente.</p>
-        <p>No algo comprado, sino algo pensado, algo hecho con calma, con intención y con mucho cariño.</p>
+    <p>
+        Tal vez eres un poco misteriosa… y no está mal,
+        de hecho creo que eso es parte de lo que te hace tan interesante.
+    </p>
 
-        <p>Desde que supe que se acercaba tu cumpleaños, me puse a pensar cómo sorprenderte.</p>
-        <p>No fue fácil, de hecho, me tomó casi dos meses pensar, probar, equivocarme y volver a intentar.</p>
+    <p>
+        Solo quería decirte que me gusta conocerte,
+        a tu ritmo, sin prisas… como el café que se disfruta despacio ☕
+    </p>
 
-        <p>Primero lo hice en la computadora, pero luego pensé:</p>
-        <p>«No, quiero que esté en tu teléfono».</p>
+    <button id="sorpresa" onclick="mostrarSorpresa()">Haz clic aquí 💌</button>
 
-        <p>Para que lo tengas contigo, para que lo veas cuando quieras, cuando tengas un momento solo para ti o cuando
-            simplemente quieras sonreír.</p>
+    <p id="extra" style="display:none; margin-top:15px;">
+        Y la verdad… me encantaría seguir descubriendo más de ti ❤️
+    </p>
 
-        <p>Porque no siempre te van a regalar cosas así, y cuando alguien se toma el tiempo de programar algo solo para
-            ti, es porque realmente le importas.</p>
+    <p><strong>— Alguien que quiere seguir conociéndote</strong></p>
+</div>
 
-        <h2>✨ Sobre ti</h2>
+<script>
+function verificar(){
+    let nombre = document.getElementById("nombre").value.toLowerCase().trim();
 
-        <p>Hay muchas cosas que te hacen especial.</p>
-        <p>Te gusta la fiesta y tienes ese don de poner el ambiente sin forzarlo, simplemente siendo tú.</p>
-
-        <p>Sabes cocinar, y no solo comida, también momentos, hogar y recuerdos.</p>
-
-        <p>Eres mamá y eres una mamá increíble.</p>
-        <p>Tu hijo tiene mucha suerte de tenerte, porque das amor, cuidado y presencia de verdad.</p>
-
-        <p>Y además de todo eso, tienes una belleza que no pasa desapercibida.</p>
-        <p>Tu cabello, tu cara y tu sonrisa son de esas cosas que se quedan en la mente.</p>
-
-        <h2>📸 Momentos que atesoro</h2>
-
-        <p>Me encanta todo lo que hemos vivido juntos.</p>
-
-        <p>Desde subir cerros en San Carlos, respirar hondo, cansarnos y aun así disfrutar cada paso.</p>
-
-        <p>Salir a correr contigo, aunque a veces yo ya iba muriendo y tú como si nada.</p>
-
-        <p>Ir a un concierto juntos, sentir la música, el ambiente y compartir ese momento.</p>
-
-        <p>Y sí… esa vez que llegué medio pasado de copas, vomité dos veces y aun así me cuidaste.</p>
-
-        <p>Gracias por eso, y prometo no volver a tomar de más (o al menos intentarlo 😅).</p>
-
-        <p>También fui a tu fiesta, según yo para mirar el terreno… jajaja, es broma.</p>
-
-        <p>Fuimos al béisbol, yo nunca había ido y ahí andaba, con el rollo en la mano, aprendiendo sobre la marcha.</p>
-
-        <h2>📝 Un poema para tu día</h2>
-
-        <p>Un veintiséis de enero el mundo entendió, que alguien especial al tiempo llegó.</p>
-        <p>Veintiocho años de historia y verdad, de fuerza, sonrisa y autenticidad.</p>
-        <p>Que la vida te cuide y te trate bonito, porque alguien como tú lo merece infinito.</p>
-
-        <p>Sé que hoy celebras con tu familia y me alegra saberlo.</p>
-        <p>Yo solo quería ser parte de tu día de esta forma.</p>
-
-        <p>No siempre soy bueno expresando todo esto, pero hoy no es momento de eso.</p>
-        <p>Hoy es tu día.</p>
-        <p>Hoy te toca brillar.</p>
-
-        <p>Y sí, todavía hay otra sorpresa.</p>
-        <p>No preguntes.</p>
-        <p>Las mejores cosas llegan cuando no las esperas.</p>
-
-        <button class="secreto-btn" onclick="mostrarSecreto()">
-            🔒 Toca aquí para desbloquear el mensaje secreto
-        </button>
-
-        <div class="secreto" id="mensajeSecreto">
-            <p>
-                Karen…<br><br>
-                Esto no es solo un regalo.<br>
-                Es tiempo, intención y cariño convertidos en algo que puedes guardar.<br><br>
-                Gracias por ser tú.<br><br>
-                — Con cariño,<br>
-                alguien que pensó en ti,<br>
-                lo escribió,<br>
-                y lo programó solo para ti 💻❤️
-            </p>
-        </div>
-
-        <p class="firma">
-            💖 Feliz cumpleaños, Karen 💖<br>
-            Que la vida te regrese todo lo bonito que das.
-        </p>
-
-    </div>
-
-    <script>
-        let abierto = false;
-
-        function mostrarSecreto() {
-            const secreto = document.getElementById("mensajeSecreto");
-            const boton = document.querySelector(".secreto-btn");
-            const audio = document.getElementById("clickRomantico");
-
-            // Sonido romántico
-            audio.currentTime = 0;
-            audio.play();
-
-            // Vibración suave
-            if (navigator.vibrate) {
-                navigator.vibrate([35, 25, 35]);
-            }
-
-            if (!abierto) {
-                secreto.style.display = "block";
-                lanzarFlotantes(); // 💖🎉🌸
-                boton.innerText = "💖 Toca para cerrar el mensaje secreto";
-                boton.classList.remove("latido");
-                abierto = true;
-            } else {
-                secreto.style.display = "none";
-                boton.innerText = "🔒 Toca aquí para desbloquear el mensaje secreto";
-                boton.classList.add("latido");
-                abierto = false;
-            }
-        }
-        function lanzarFlotantes() {
-    const emojis = ["💖","🌸","🎉","❤️","🌺"];
-    const cantidad = 25;
-
-    for (let i = 0; i < cantidad; i++) {
-        const el = document.createElement("div");
-        el.classList.add("flotante");
-        el.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-
-        el.style.left = Math.random() * 100 + "vw";
-        el.style.fontSize = (18 + Math.random() * 22) + "px";
-        el.style.animationDuration = (4 + Math.random() * 4) + "s";
-
-        document.body.appendChild(el);
-
-        setTimeout(() => el.remove(), 8000);
+    if(nombre === "denin aldrete garcia"){
+        document.getElementById("login").style.display="none";
+        document.getElementById("carta").style.display="block";
+        document.getElementById("sorpresa").style.display="inline-block";
+        lanzarCorazones();
+    }else{
+        alert("Ups… ese no es el nombre correcto 😏");
     }
 }
 
-        // Activar latido inicial
-        document.querySelector(".secreto-btn").classList.add("latido");
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const parrafos = document.querySelectorAll(".carta > p, .carta h2 + p");
-
-
-            parrafos.forEach((p, index) => {
-                setTimeout(() => {
-                    p.classList.add("visible");
-                }, index * 180);
-            });
-        });
-    </script>
-    <script>
-const emojisLluvia = ["💖", "❤️", "🌸", "🌺", "🎉"];
-
-function crearLluvia() {
-    const el = document.createElement("div");
-    el.classList.add("flotante");
-
-    el.innerText = emojisLluvia[Math.floor(Math.random() * emojisLluvia.length)];
-
-    el.style.left = Math.random() * 100 + "vw";
-    el.style.fontSize = (18 + Math.random() * 26) + "px";
-    el.style.animationDuration = (4 + Math.random() * 5) + "s";
-
-    document.body.appendChild(el);
-
-    // eliminar cuando termine de caer
-    setTimeout(() => {
-        el.remove();
-    }, 10000);
+function mostrarSorpresa(){
+    document.getElementById("extra").style.display="block";
 }
 
-// 💖 LLUVIA INFINITA 💖
-setInterval(crearLluvia, 120);
+/* corazones */
+function lanzarCorazones(){
+    setInterval(()=>{
+        let corazon = document.createElement("div");
+        corazon.className="corazon";
+        corazon.innerHTML="❤️";
+        corazon.style.left=Math.random()*100+"vw";
+        corazon.style.fontSize=(Math.random()*20+10)+"px";
+        document.body.appendChild(corazon);
+
+        setTimeout(()=>{corazon.remove();},5000);
+    },300);
+}
 </script>
 
-
-
-    <audio id="clickRomantico" preload="auto">
-        <source src="https://assets.mixkit.co/sfx/preview/mixkit-soft-click-tone-1112.mp3" type="audio/mpeg">
-    </audio>
-
-
 </body>
-
 </html>
