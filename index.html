@@ -19,6 +19,7 @@
             animation: gradientAnim 10s ease infinite;
             padding: 20px;
             box-sizing: border-box;
+            position: relative; /* Clave para el manejo de capas */
         }
 
         @keyframes gradientAnim {
@@ -27,13 +28,13 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* CUADRO DE ERROR PERSONALIZADO (MODAL) */
+        /* CUADRO DE ERROR PERSONALIZADO (MODAL) - Z-INDEX ALTO */
         .modal-overlay {
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.5);
-            z-index: 100;
+            z-index: 1000; /* Siempre por encima de todo */
             justify-content: center;
             align-items: center;
             backdrop-filter: blur(3px);
@@ -55,7 +56,12 @@
             to { transform: scale(1); opacity: 1; }
         }
 
-        /* INPUT */
+        /* INPUT Y CARTA PRINCIPAL - Z-INDEX MEDIO */
+        #login, .carta {
+            z-index: 100; /* Capa base para el contenido */
+            position: relative; /* Necesario para que z-index funcione */
+        }
+
         #login {
             text-align: center;
             color: #fff;
@@ -64,7 +70,6 @@
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             backdrop-filter: blur(5px);
-            z-index: 10;
             width: 100%;
             max-width: 400px;
         }
@@ -100,7 +105,6 @@
             transform: scale(1.05);
         }
 
-        /* CARTA */
         .carta {
             display: none;
             background: rgba(255, 255, 255, 0.95);
@@ -111,7 +115,6 @@
             text-align: center;
             box-shadow: 0 15px 40px rgba(0,0,0,0.4);
             animation: fadeIn 1.5s ease;
-            z-index: 10;
             color: #4a3627;
         }
 
@@ -146,7 +149,7 @@
             gap: 15px;
             margin-top: 20px;
             position: relative;
-            height: 60px; /* Espacio para que el botón No pueda moverse */
+            height: 60px;
         }
 
         .btn-si { background: #8b5e3c; color: white; width: 100px; }
@@ -160,9 +163,12 @@
             animation: fadeIn 1s ease;
         }
 
-        /* HOJAS DE OTOÑO */
+        /* HOJAS DE OTOÑO - Z-INDEX VARIABLE (IMPORTANTE) */
         .hoja {
-            position: fixed; top: -10vh; z-index: 1; pointer-events: none;
+            position: fixed;
+            top: -10vh;
+            /* z-index se asigna en JavaScript dinámicamente */
+            pointer-events: none; /* Clave para poder hacer clic 'a través' de las hojas que están enfrente */
             animation: caer linear forwards;
         }
         @keyframes caer {
@@ -243,7 +249,7 @@
     <script>
         let contadorNo = 0;
 
-        // FUNCIONES DEL MODAL (MENSAJES FLOTANTES)
+        // FUNCIONES DEL MODAL
         function mostrarModal(mensaje) {
             document.getElementById("modalTexto").innerText = mensaje;
             document.getElementById("customModal").style.display = "flex";
@@ -289,26 +295,41 @@
                 mostrarModal("Mmm... creo que no lo pensaste bien. ¡A ver, piénsalo otra vez! 😏");
             } else if (contadorNo === 3) {
                 mostrarModal("Definitivamente tu dedo resbaló. Te daré otra oportunidad 😌");
-                // Hace que el botón huya visualmente dentro de su contenedor
                 btnNo.style.position = "absolute";
                 btnNo.style.transform = "translateX(100px)";
             } else {
                 mostrarModal("Ay ya, acéptalo. ¡Dale al Sí! 🤎");
-                btnNo.style.display = "none"; // Desaparece el botón "No"
+                btnNo.style.display = "none";
             }
         }
 
-        /* ANIMACIÓN DE HOJAS */
+        /* ANIMACIÓN DE HOJAS MEJORADA (PROFUNDIDAD) */
         function lanzarHojas() {
             const tiposDeHojas = ["🍂", "🍁", "🍃"]; 
+            const contenedorContenidoZIndex = 100; // El z-index de la carta definido en CSS
+
             setInterval(() => {
                 let hoja = document.createElement("div");
                 hoja.className = "hoja";
                 hoja.innerHTML = tiposDeHojas[Math.floor(Math.random() * tiposDeHojas.length)];
+                
+                // --- LÓGICA DE PROFUNDIDAD ---
+                // Decidimos al azar si la hoja va enfrente o detrás del texto (aprox 50% chance)
+                if (Math.random() > 0.5) {
+                    // ENFRENTE de la carta (pero debajo del modal que es 1000)
+                    hoja.style.zIndex = contenedorContenidoZIndex + 50; 
+                } else {
+                    // DETRÁS de la carta
+                    hoja.style.zIndex = contenedorContenidoZIndex - 50; 
+                }
+                // -----------------------------
+
                 hoja.style.left = Math.random() * 100 + "vw";
                 hoja.style.fontSize = (Math.random() * 15 + 15) + "px";
                 hoja.style.animationDuration = (Math.random() * 5 + 5) + "s";
+                
                 document.body.appendChild(hoja);
+                
                 setTimeout(() => { hoja.remove(); }, 10000);
             }, 500); 
         }
