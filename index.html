@@ -2,21 +2,23 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para ti 🍂</title>
 
     <style>
         body {
             margin: 0;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            /* Un fondo con tonos otoñales cálidos */
             background: linear-gradient(135deg, #8b5e3c, #d4a373, #faedcb);
             background-size: 200% 200%;
             font-family: 'Segoe UI', sans-serif;
-            overflow: hidden;
+            overflow-x: hidden;
             animation: gradientAnim 10s ease infinite;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         @keyframes gradientAnim {
@@ -25,28 +27,56 @@
             100% { background-position: 0% 50%; }
         }
 
+        /* CUADRO DE ERROR PERSONALIZADO (MODAL) */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(3px);
+        }
+
+        .modal-box {
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 80%;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            color: #5c3a21;
+            animation: popIn 0.3s ease;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
         /* INPUT */
         #login {
             text-align: center;
             color: #fff;
-            background: rgba(92, 58, 33, 0.8);
-            padding: 40px;
+            background: rgba(92, 58, 33, 0.85);
+            padding: 40px 20px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             backdrop-filter: blur(5px);
             z-index: 10;
+            width: 100%;
+            max-width: 400px;
         }
 
-        #login h2 {
-            margin-top: 0;
-        }
+        #login h2 { margin-top: 0; }
 
         input {
             padding: 12px;
             border-radius: 10px;
             border: none;
             margin-top: 10px;
-            width: 250px;
+            width: 80%;
             font-size: 16px;
             outline: none;
             text-align: center;
@@ -74,10 +104,10 @@
         .carta {
             display: none;
             background: rgba(255, 255, 255, 0.95);
-            padding: 40px;
+            padding: 30px 20px;
             border-radius: 20px;
-            width: 500px;
-            max-width: 90%;
+            width: 100%;
+            max-width: 500px;
             text-align: center;
             box-shadow: 0 15px 40px rgba(0,0,0,0.4);
             animation: fadeIn 1.5s ease;
@@ -85,49 +115,54 @@
             color: #4a3627;
         }
 
-        .carta h1 {
-            color: #8b5e3c;
-            margin-bottom: 20px;
-        }
-
-        .carta p {
-            line-height: 1.6;
-            margin-bottom: 15px;
-            font-size: 17px;
-        }
+        .carta h1 { color: #8b5e3c; margin-bottom: 20px; }
+        .carta p { line-height: 1.6; margin-bottom: 15px; font-size: 16px; }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px) scale(0.9); }
             to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        /* BOTON SORPRESA */
-        #sorpresa {
-            display: none;
+        /* POEMA */
+        .poema {
+            font-style: italic;
+            background: #faedcb;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            color: #6b4f3a;
+            border-left: 5px solid #8b5e3c;
+        }
+
+        /* BOTON SORPRESA Y PREGUNTA */
+        #sorpresa { background: #8b5e3c; color: white; width: 80%; }
+        #sorpresa:hover { background: #6b4f3a; }
+
+        .botones-juego {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
             margin-top: 20px;
-            background: #8b5e3c;
-            color: white;
+            position: relative;
+            height: 60px; /* Espacio para que el botón No pueda moverse */
         }
 
-        #sorpresa:hover {
-            background: #6b4f3a;
-        }
+        .btn-si { background: #8b5e3c; color: white; width: 100px; }
+        .btn-no { background: #ccc; color: #333; width: 100px; position: relative; transition: all 0.3s ease; }
 
-        #extra {
+        #mensaje-final {
             font-size: 18px;
             color: #d64045;
             font-weight: bold;
+            margin-top: 20px;
+            animation: fadeIn 1s ease;
         }
 
         /* HOJAS DE OTOÑO */
         .hoja {
-            position: fixed;
-            top: -10vh; /* Empiezan arriba de la pantalla */
-            z-index: 1;
-            pointer-events: none;
+            position: fixed; top: -10vh; z-index: 1; pointer-events: none;
             animation: caer linear forwards;
         }
-
         @keyframes caer {
             0% { transform: translateY(0) rotate(0deg); opacity: 0; }
             10% { opacity: 1; }
@@ -138,6 +173,13 @@
 </head>
 
 <body>
+
+    <div class="modal-overlay" id="customModal">
+        <div class="modal-box">
+            <p id="modalTexto" style="font-size: 18px; font-weight: bold;"></p>
+            <button onclick="cerrarModal()">Aceptar</button>
+        </div>
+    </div>
 
     <div id="login">
         <h2>💌 Tengo algo para ti</h2>
@@ -150,88 +192,113 @@
     <div class="carta" id="carta">
         <h1>Hola Denin 😊</h1>
 
-        <p>
-            No sabía cómo hacer esto especial, pero quería que fuera algo diferente...
-            algo que se sintiera tan sencillo y bonito como tú.
-        </p>
+        <p>No sabía cómo hacer esto especial, pero quería que fuera algo diferente... algo que se sintiera tan sencillo y bonito como tú.</p>
 
-        <p>
-            Me gusta tu forma tranquila de ser, tu manera de ver la vida,
-            y esa esencia tan natural que tienes, como si fueras parte del otoño 🍂,
-            de esos momentos donde todo se siente en calma.
-        </p>
+        <p>Me gusta tu forma tranquila de ser, tu manera de ver la vida, y esa esencia tan natural que tienes. Es como si fueras parte del otoño 🍂, de esos momentos donde todo se siente en perfecta calma.</p>
 
-        <p>
-            Admiro mucho lo que haces, tu dedicación,
-            tu inteligencia como ingeniera y ahora en tu maestría…
-            pero más allá de eso, me gusta la persona que eres.
-        </p>
+        <p>Admiro mucho todo lo que haces, tu dedicación, tu inteligencia como ingeniera y el esfuerzo en tu maestría… pero más allá de tus logros, me gusta la persona que eres cuando simplemente eres tú.</p>
 
-        <p>
-            Tal vez eres un poco misteriosa… y no está mal,
-            de hecho creo que eso es parte de lo que te hace tan interesante.
-        </p>
+        <p>Tal vez eres un poco misteriosa… y no está mal, de hecho, creo que eso es gran parte de lo que te hace tan interesante y me da más curiosidad por saber qué hay detrás de esa mirada.</p>
 
-        <p>
-            Solo quería decirte que me gusta conocerte,
-            a tu ritmo, sin prisas… como el café que se disfruta despacio ☕
-        </p>
+        <p>Solo quería decirte que me encanta conocerte, a tu ritmo, sin prisas… disfrutando cada detalle como ese café que se toma despacio y te reinicia la vida ☕.</p>
 
-        <button id="sorpresa" onclick="mostrarSorpresa()">Haz clic aquí 💌</button>
+        <button id="sorpresa" onclick="mostrarSorpresa()">Haz clic aquí para ver más 💌</button>
 
-        <p id="extra" style="display:none; margin-top:20px;">
-            Y la verdad… me encantaría seguir descubriendo más de ti ❤️
-        </p>
+        <div id="extra" style="display:none;">
+            <div class="poema">
+                <strong>Denin,</strong><br>
+                Como la brisa fresca del otoño,<br>
+                y el aroma de un café caliente al despertar.<br>
+                Hay en ti la paz pura de la naturaleza,<br>
+                y en tus ojos, ese tono café en el que me quiero quedar.
+            </div>
 
-        <p style="margin-top: 30px;"><strong>— Alguien que quiere seguir conociéndote</strong></p>
+            <p style="font-size: 18px; font-weight: bold; color: #8b5e3c;">¿Te gustaría seguir conociéndome?</p>
+            
+            <div class="botones-juego" id="zona-botones">
+                <button class="btn-si" onclick="dijoSi()">Sí ❤️</button>
+                <button class="btn-no" id="btn-no" onclick="dijoNo()">No</button>
+            </div>
+
+            <div id="mensaje-final" style="display:none;">
+                ¡Ya ves que sí querías! Igual no te iba a dejar elegir "No" jajaja 🥰<br>
+                <span style="font-size: 14px; color: #666; font-weight: normal; display: block; margin-top: 10px;">— Alguien que quiere seguir descubriéndote</span>
+            </div>
+        </div>
     </div>
 
     <script>
+        let contadorNo = 0;
+
+        // FUNCIONES DEL MODAL (MENSAJES FLOTANTES)
+        function mostrarModal(mensaje) {
+            document.getElementById("modalTexto").innerText = mensaje;
+            document.getElementById("customModal").style.display = "flex";
+        }
+
+        function cerrarModal() {
+            document.getElementById("customModal").style.display = "none";
+        }
+
+        // VALIDAR NOMBRE
         function verificar() {
             let nombre = document.getElementById("nombre").value.toLowerCase().trim();
 
             if (nombre === "denin aldrete garcia") {
                 document.getElementById("login").style.display = "none";
                 document.getElementById("carta").style.display = "block";
-                document.getElementById("sorpresa").style.display = "inline-block";
                 lanzarHojas();
             } else {
-                alert("Ups… ese no es el nombre correcto 😏");
+                mostrarModal("Ups… me parece que ese no es el nombre correcto 😏 Intenta con tu nombre completo.");
             }
         }
 
+        // MOSTRAR POEMA Y PREGUNTA
         function mostrarSorpresa() {
             document.getElementById("extra").style.display = "block";
-            document.getElementById("sorpresa").style.display = "none"; // Oculta el botón para que se vea más limpio
+            document.getElementById("sorpresa").style.display = "none"; 
         }
 
-        /* Animación de hojas de otoño */
-        function lanzarHojas() {
-            const tiposDeHojas = ["🍂", "🍁", "🍃"]; // Diferentes hojas
+        // LÓGICA DEL BOTÓN SÍ
+        function dijoSi() {
+            document.getElementById("zona-botones").style.display = "none";
+            document.getElementById("mensaje-final").style.display = "block";
+        }
 
+        // LÓGICA DIVERTIDA DEL BOTÓN NO
+        function dijoNo() {
+            contadorNo++;
+            let btnNo = document.getElementById("btn-no");
+
+            if (contadorNo === 1) {
+                mostrarModal("Ups... creo que le diste por accidente 🤭. Intenta de nuevo.");
+            } else if (contadorNo === 2) {
+                mostrarModal("Mmm... creo que no lo pensaste bien. ¡A ver, piénsalo otra vez! 😏");
+            } else if (contadorNo === 3) {
+                mostrarModal("Definitivamente tu dedo resbaló. Te daré otra oportunidad 😌");
+                // Hace que el botón huya visualmente dentro de su contenedor
+                btnNo.style.position = "absolute";
+                btnNo.style.transform = "translateX(100px)";
+            } else {
+                mostrarModal("Ay ya, acéptalo. ¡Dale al Sí! 🤎");
+                btnNo.style.display = "none"; // Desaparece el botón "No"
+            }
+        }
+
+        /* ANIMACIÓN DE HOJAS */
+        function lanzarHojas() {
+            const tiposDeHojas = ["🍂", "🍁", "🍃"]; 
             setInterval(() => {
                 let hoja = document.createElement("div");
                 hoja.className = "hoja";
-                
-                // Selecciona una hoja al azar
                 hoja.innerHTML = tiposDeHojas[Math.floor(Math.random() * tiposDeHojas.length)];
-                
-                // Posición horizontal aleatoria
                 hoja.style.left = Math.random() * 100 + "vw";
-                
-                // Tamaño aleatorio
-                hoja.style.fontSize = (Math.random() * 20 + 15) + "px";
-                
-                // Velocidad de caída aleatoria (entre 5 y 10 segundos)
+                hoja.style.fontSize = (Math.random() * 15 + 15) + "px";
                 hoja.style.animationDuration = (Math.random() * 5 + 5) + "s";
-                
                 document.body.appendChild(hoja);
-
-                // Elimina la hoja después de que cae para no saturar la memoria
                 setTimeout(() => { hoja.remove(); }, 10000);
-            }, 400); // Crea una hoja nueva cada 400 milisegundos
+            }, 500); 
         }
     </script>
-
 </body>
 </html>
